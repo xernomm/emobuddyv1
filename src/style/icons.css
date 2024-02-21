@@ -1,0 +1,213 @@
+.threeChevrons
+{
+    height: 64px;
+    transform: translateY(8%) translateX(50%);
+    margin-bottom: 4%;
+}
+
+@media only screen and (max-width:768px) {
+    .threeChevrons
+{
+    height: 25px;
+    display: flex-start;
+    transform: translateY(8%) translateX(30%);
+    margin-bottom: 6%;
+}
+.empowerImg
+{
+    width: 100% !important;
+}
+#orangeHeart, #pinkHeart, #greenHeart, #grayHeart
+{
+    height: 350px !important;
+}
+
+.hearts{
+    height: 100% !important;
+}
+
+.oreo
+{
+    width: 15% !important;
+    margin-bottom: 3%;
+}
+
+}
+
+
+@media only screen and (min-width:1024px) {
+    #orangeHeart
+    {
+        background-image: url('../img/orange-heart.svg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 100% !important;
+        z-index: 2;
+        transform: translateX(20%);
+        padding: 5% 2%;
+
+    }
+    #pinkHeart
+    {
+        background-image: url('../img/pink-heart.svg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        transform: translateX(10%);
+        padding: 5% 2%;
+        height: 100% !important;
+        z-index: 3;
+    }
+    #greenHeart
+    {
+        background-image: url('../img/green-heart.svg');
+        background-repeat: no-repeat;
+        height: 100% !important;
+        background-size: 100%;
+        transform: translateX(0%);
+        padding: 5% 2%;
+        z-index: 4;
+    }
+    #grayHeart
+    {
+        background-image: url('../img/gray-heart.svg');
+        background-repeat: no-repeat;
+        height: 100% !important;
+        background-size: 100%;
+        transform: translateX(-10%);
+        padding: 5% 2%;
+        z-index: 5;
+    }
+}
+
+#orangeHeart
+{
+    background-image: url('../img/orange-heart.svg');
+    background-repeat: no-repeat;
+    background-size: 100% !important;
+    z-index: 2;
+    padding: 5% 2%;
+}
+#pinkHeart
+{
+    background-image: url('../img/pink-heart.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 5% 2%;
+    z-index: 3;
+}
+#greenHeart
+{
+    background-image: url('../img/green-heart.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 5% 2%;
+    z-index: 4;
+}
+#grayHeart
+{
+    background-image: url('../img/gray-heart.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 5% 2%;
+    z-index: 5;
+}
+
+.oreo
+{
+    transform: translateY(20%);
+}
+
+.yellowOval
+{
+    background-image: url('../img/yellowOval.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 7% 0% 15% 35%;
+    z-index: 2;
+}
+
+.pinkOval
+{
+    background-image: url('../img/pinkOval.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 7% 35% 15% 7%;
+    z-index: 3;
+    transform: translateY(-35%);
+}
+
+.greenOval
+{
+    background-image: url('../img/greenOval.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 99 !important;
+    transform: translateY(-185%);
+    padding: 7% 0% 15% 35%;
+}
+
+.grayOval
+{
+    background-image: url('../img/grayOval.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 4 !important;
+    padding: 7% 35% 15% 7%;
+    transform: translateY(-15%);
+
+}
+
+.numbersubs
+{
+    height: 100%;
+    margin-right: 5% !important;
+}
+
+.priceBox
+{
+    background-color: #FE804B;
+    padding: 5%;
+    width: 85% !important;
+    transform: translateY(30%);
+    z-index: 1;
+    position: relative;
+}
+
+#levelBoxYellow
+{
+    background-color: #FDD20D ;
+}
+
+#levelBoxRed
+{
+    background-color: #FB3038 ;
+}
+
+#levelBoxGreen
+{
+    background-color: #79B99C ;
+}
+
+.packageBox
+{
+    background-image: linear-gradient(to bottom, #7795FD, #183282);
+    padding: 5%;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+    border: 4px solid white;
+}
+
+.colorImg
+{
+    height: 30px;
+}
+
+.askUsBg
+{
+    background-image: linear-gradient(to bottom, #FF9A63, #FE804B);
+    border: 8px solid white;
+    padding: 3% 8%;
+    border-radius: 90px;
+}

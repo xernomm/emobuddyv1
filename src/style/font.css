@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
+
+.learn p
+{
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900 !important;
+    text-align: center;
+    color: #183282;
+    font-size: 64px;
+    word-spacing: 0%;
+    line-height: 1.2;
+}
+
+.chevron-container {
+    text-align: center;
+}
+
+.chevron
+{
+    font-family: 'Archivo';
+    font-weight: 900 !important;
+    text-align: center ;
+    color: #FF834E;
+    font-size: 64px;
+    line-height: 1.2;
+    font-weight:bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .chevron {
+    font-size: 28px;
+    text-align: left !important ;
+    transform: translateX(-20%);
+  }
+  .learn p {
+    font-size: 30px;
+  }
+  .embrace ,.embrace-orange
+{
+    text-align: center;
+    margin-top: 5%;
+    color: #183282;
+    font-family: 'Amiko';
+    font-size: 15px !important;
+}
+}
+
+
+.embrace
+{
+    text-align: center;
+    margin-top: 5%;
+    color: #183282;
+    font-family: 'Amiko';
+    font-size: 24px;
+}
+
+
+.embrace-orange
+{
+    text-align: center;
+    margin-top: 3% !important;
+    color: #FF8550;
+    font-family: 'Amiko';
+    font-size: 24px;
+}
+
+.heartLead
+{
+  font-family: 'Archivo';
+  font-weight: 900 !important;
+  text-align: center;
+  color: #084430;
+  font-size: 27px;
+}
+
+.heartContent
+{
+  font-family: 'Archivo';
+  font-weight: 400 !important;
+  text-align: center;
+  color: #084430;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.whyHead
+{
+  font-family: 'Archivo';
+  font-weight: 900 !important;
+  color: #183282;
+  font-size: 78px;
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.whyHeadIn
+{
+  font-family: 'Archivo';
+  font-weight: 900 !important;
+  color: #183282;
+  font-size: 48px;
+}
+
+.whyHeadSmaller
+{
+  font-family: 'Archivo';
+  font-weight: 900 !important;
+  color: #183282;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.whyContent
+{
+  font-family: 'Inter';
+  color: white;
+  font-weight: 900 !important;
+  font-size: 32px;
+}
+
+.subsHeader
+{
+  font-family: 'Inter';
+  font-weight: 900;
+  color: black;
+  font-size: 38px;
+}
+
+.subsContent
+{
+  font-family: 'Inter';
+  font-weight: 500;
+  color: black;
+  font-size: 24px;
+  font-style: italic;
+}
+
+.priceInfo
+{
+  text-align: center;
+  color: white;
+  font-family: 'Archivo';
+  font-weight: 900;
+  font-size: 32px;
+}
+
+.smallerPriceInfo
+{
+  text-align: center;
+  color: white;
+  font-family: 'Archivo' ;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.levelText
+{
+  text-align: center;
+  color: white;
+  font-family: 'Archivo';
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.packageInfoLead
+{
+  font-family: 'Inter';
+  font-weight: 900;
+  color: white;
+  font-size: 18px;
+}
+
+.packageInfoPoints
+{
+  font-family: 'Inter';
+  color: white;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.packageDesc
+{
+  color: white;
+  font-size: 16px;
+}
+
+.questionsText
+{
+  font-family: 'Archivo';
+  color: #FF834E;
+  font-weight: 900;
+  font-size: 58px;
+}
+
+.askLead
+{
+  font-family: 'Archivo';
+  font-weight: 900;
+  font-size: 58px;
+  text-align: center;
+  color: white;
+}
+
+.askSublead
+{
+  font-family: 'Amiko';
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+  color: white;
+}
+
+.labels
+{
+  margin-left: 8% !important;
+  font-family: 'Archivo' !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  color: rgba(0, 0, 0, 0.507);
+}
+
+label.labels::after{
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.labelsta
+{
+  padding-left: 8% !important;
+  font-family: 'Archivo' !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  color: rgba(0, 0, 0, 0.507);
+}
+
+.form-control:focus + .labels,
+.form-control:not(:placeholder-shown) + .labels 
+{
+  font-size: 5px;
+  color: #66666600;
+}
+
+.interBlue
+{
+  font-family: 'Inter';
+  color: #183282;
+  text-decoration: none;
+}
+
+.px16
+{
+  font-size: 16px;
+}
+
+.px18
+{
+  font-size: 18px;
+}

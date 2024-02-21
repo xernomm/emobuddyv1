@@ -1,0 +1,134 @@
+.btn.btn-ytp-primary
+{
+    background-color: #FF834E !important;
+    color: white !important;
+    font-size: 15px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    border: #000000;
+}
+
+.btn.btn-ytp-primary:hover
+{
+    background-color: #c15122 !important;
+    color: white !important;
+    font-size: 15px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    border: #000000;
+    transition: background-color 0.5s;
+}
+
+.btn.btn-ytp-outline-primary {
+    background-color: #ffffff00 !important;
+    color: #FF834E !important;
+    border: 2px solid #ff834e; /* Adjust border width as needed */
+    font-size: 15px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    transition: background-color 0.5s;
+}
+
+
+.btn.btn-ytp-outline-primary:hover
+{
+    background-color: #FF834E !important;
+    color: white !important;
+    font-size: 15px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    border: 2px solid #ff834e; /* Adjust border width as needed */
+    transition: background-color 0.5s;
+}
+
+.btn
+{
+    font-size: 15px !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+.signUpBtn
+{
+    padding:30% 60% !important;
+}
+
+#yellowPlanBtn
+{
+    background-color: #FDD20D !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    border: #000000;
+    transition: background-color 0.5s;
+}
+
+#yellowPlanBtn:hover
+{
+    background-color: #ae9214 !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    border: #000000;
+    transition: background-color 0.5s;
+}
+
+#redPlanBtn
+{
+    background-color: #FB3038 !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    border: #000000;
+    transition: background-color 0.5s;
+    margin-top: 42%;
+}
+
+#redPlanBtn:hover
+{
+    background-color: #a31f24 !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    border: #000000;
+    transition: background-color 0.5s;
+}
+
+#greenPlanBtn
+{
+    background-color: #79B99C !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    border: #000000;
+    margin-top: 23%;
+    transition: background-color 0.5s;
+}
+
+#greenPlanBtn:hover
+{
+    background-color: #45725e !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: bold;
+    border: #000000;
+    transition: background-color 0.5s;
+}
+
+.askUsBtn {
+    margin-top: 3%;
+    background-image: linear-gradient(to bottom, #4664C1, #183282);
+    transition: background-color 0.5s; /* Transition the background-color property */
+}
+
+.askUsBtn:hover {
+    background-image: linear-gradient(to bottom, #344b8f, #0e2465);
+    background-color: transparent; /* Set the background-color to transparent */
+    transition: background-color 0.5s; /* Transition the background-color property */
+}
