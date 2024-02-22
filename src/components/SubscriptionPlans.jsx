@@ -80,11 +80,7 @@ export function SubscriptionPlans()
                                     </ul>
                                 </div>
                         </div>
-                        <div className=" d-flex justify-content-center col-12 mt-5">
-                            <Button type="btn" className="btn col-10 rounded rounded-4 py-3" id="yellowPlanBtn">
-                                SELECT PLAN
-                            </Button>
-                        </div>
+
                         </div>
                     </div>
 
@@ -126,11 +122,7 @@ export function SubscriptionPlans()
                                     </ul>
                                 </div>
                         </div>
-                        <div  className=" d-flex justify-content-center col-12 mt-auto ">
-                            <Button type="btn" className="btn col-10 rounded rounded-4 py-3" id="redPlanBtn">
-                                SELECT PLAN
-                            </Button>
-                        </div>
+
                         </div>
                     </div>
 
@@ -174,18 +166,34 @@ export function SubscriptionPlans()
                                     </ul>
                                 </div>
                         </div>
-                        <div className=" d-flex justify-content-center col-12 mt-5">
-                            <Button type="btn" className="btn col-10 rounded rounded-4 py-3" id="greenPlanBtn">
-                                SELECT PLAN
-                            </Button>
-                        </div>
+                        
                         </div>
                     </div>
                 </div>
             </Row>
+
+            <div className="buttonRows">
+                <div className="d-lg-flex justify-content-center col-lg-12">
+                        <div className=" d-flex justify-content-center col-4 mx-3">
+                            <Button type="btn" className="btn col-10 rounded rounded-4 py-3" id="yellowPlanBtn">
+                                SELECT PLAN
+                            </Button>
+                        </div>
+                     <div  className=" d-flex justify-content-center col-4 mx-3 ">
+                            <Button type="btn" className="btn col-10 rounded rounded-4 py-3" id="redPlanBtn">
+                                SELECT PLAN
+                            </Button>
+                        </div>
+                        <div className=" d-flex justify-content-center col-4 mx-3">
+                            <Button type="btn" className="btn col-10 rounded rounded-4 py-3" id="greenPlanBtn">
+                                SELECT PLAN
+                            </Button>
+                        </div>
+                </div>
+            </div>
             <Row>
-                <div className="d-flex justify-content-center col-12 mt-4">
-                    <Button type="btn" className="col-2 py-3 btn btn-ytp-outline-primary rounded rounded-3">
+                <div className="d-flex justify-content-center col-12 mt-5">
+                    <Button type="btn" className="col-2 py-3 btn btn-ytp-outline-primary rounded rounded-3 mt-5">
                         SIGN UP NOW
                     </Button>
                 </div>

@@ -70,7 +70,14 @@
     margin-top: 2% !important;
     padding-right: 12%;
     padding-left: 12%;
-    z-index: 3;
+    
+}
+
+.buttonRows
+{
+    margin-top: 2% !important;
+    padding-right: 12%;
+    padding-left: 12%;
 }
 
 .react-accordion .accordion-item {
