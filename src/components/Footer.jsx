@@ -151,7 +151,7 @@ export function Footer()
                 </div>
             </Row>
 
-            <Row className="px-5 mt-5">
+            <Row className="ps-5 mt-5">
                 <div className="col-lg-12 d-lg-flex">
                     <div className="col-lg-6 col-sm-12">
                         <p className="interBlue px16">
@@ -159,10 +159,10 @@ export function Footer()
                         </p>
                     </div>
                     <div className="col-lg-6 d-flex justifty-content-end">
-                        <div className="col-4">
+                        <div className="col-6">
 
                         </div>
-                        <div className="col-8 d-flex ms-5">
+                        <div className="col-6 d-flex ms-5">
                             <a href="" className="interBlue px16">Terms and service</a>
                             <a href="" className="interBlue px16 ms-5">Privacy Policy</a>
                         </div>
