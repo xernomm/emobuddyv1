@@ -141,8 +141,8 @@
     background-image: url('../img/greenOval.svg');
     background-repeat: no-repeat;
     background-size: 100%;
-    z-index: 99 !important;
-    transform: translateY(-185%);
+    z-index: 5 !important;
+    transform: translateY(-180%);
     padding: 7% 0% 15% 35%;
 }
 
@@ -153,7 +153,7 @@
     background-size: 100%;
     z-index: 4 !important;
     padding: 7% 35% 15% 7%;
-    transform: translateY(-15%);
+    transform: translateY(-10%);
 
 }
 
