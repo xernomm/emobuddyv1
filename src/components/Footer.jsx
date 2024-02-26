@@ -1,10 +1,46 @@
 import { Button, Container, Form, Row } from "react-bootstrap";
 import Emobuddy from '../img/emobuddy logo.svg'
+import * as Icon from 'react-bootstrap-icons'
 import fb from '../img/facebook.svg'
 import ig from '../img/instagram.svg'
-import tt from '../img/tiktok.svg'
+import Swal from "sweetalert2";
+import { useState } from "react";
 export function Footer()
 {
+    const [validated, setValidated] = useState(false);
+
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+    
+        setValidated(true);
+    
+        if (form.checkValidity() === true) {
+            event.preventDefault()
+            Swal.fire({
+              title: "Do you want to save the changes?",
+              icon: 'info',
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: "Save",
+              denyButtonText: `Don't save`
+            }).then((result) => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                Swal.fire("Saved!", "", "success");
+                form.submit(); // Submit the form
+                setValidated(true);
+              } else if (result.isDenied) {
+                event.preventDefault();
+                Swal.fire("Changes are not saved", "", "info");
+              }
+            });
+          }
+      };
+      
     return (
         <>
         <Container className="px-5">
@@ -119,14 +155,11 @@ export function Footer()
                     </div>
                     <div className="col-lg-3 col-sm-12">
                         <div className="d-flex my-5">
-                            <a href="">
+                            <a href="https://www.facebook.com/youthopiaHQ/" rel="noreferrer" target="_blank">
                             <img src={fb} alt="" className="me-3" />
                             </a>
-                            <a href="">
+                            <a href="https://www.instagram.com/youthopiahq" rel="noreferrer" target="_blank">
                             <img src={ig} alt="" className="me-3" />
-                            </a>
-                            <a href="">
-                            <img src={tt} alt="" className="me-3" />
                             </a>
                         </div>
 
@@ -134,19 +167,32 @@ export function Footer()
                             Sign Up for our Newsletter
                         </p>
 
-                        <Form>
-                        <Form.Floating className="mb-3">
-                                            <Form.Control
-                                            id="email"
-                                            type="email"
-                                            placeholder="Email Address"
-                                            className="rounded rounded-5 col-12"
-                                            style={{ height: '60px', width: '125%' }}
+                        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                            <div className="d-flex justify-content-end">
+                             <Button className="btn btn-outline-secondary btnSubs" type="submit">
+                                    <Icon.SendFill className="interBlue" />
+                                </Button>
+                            </div>
 
-                                            />
-                                            <label className="labels" htmlFor="floatingInputCustom">Email Address</label>
-                                        </Form.Floating>
+                            <div className="input-group mb-3">
+                                <Form.Floating>
+                                    <Form.Control
+                                        id="email"
+                                        type="email"
+                                        placeholder="Email Address"
+                                        className="rounded rounded-5"
+                                        style={{ height: '60px', width: '100%' }}
+                                        required
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                    />
+                                    <Form.Control.Feedback type="invalid">Please enter a valid email address.</Form.Control.Feedback>
+                                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                    <label className="labels" htmlFor="floatingInputCustom">Email Address</label>
+                                </Form.Floating>
+                                
+                            </div>
                         </Form>
+
                     </div>
                 </div>
             </Row>

@@ -123,7 +123,6 @@ const [validated, setValidated] = useState(false);
                                             />
                                             <Form.Control.Feedback type="invalid">Please enter a valid email address.</Form.Control.Feedback>
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-
                                             <label className="labels" htmlFor="floatingInputCustom">Email Address</label>
                                         </Form.Floating>
                                         <Form.Floating className="mb-3">
