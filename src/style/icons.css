@@ -34,6 +34,15 @@
 
 }
 
+.regisImgTopDiv {
+    overflow: hidden;
+  }
+
+.registerImg {
+    width: 103%;
+    height: 130px;
+  }
+
 
 @media only screen and (min-width:1024px) {
     #orangeHeart
@@ -211,3 +220,12 @@
     padding: 3% 8%;
     border-radius: 90px;
 }
+
+.regisContainerForm {
+    max-width: 1140px;
+    width: 65%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }

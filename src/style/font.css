@@ -20,7 +20,7 @@
 .chevron
 {
     font-family: 'Archivo';
-    font-weight: 900 !important;
+    font-variation-settings: "wght" 850;
     text-align: center ;
     color: #FF834E;
     font-size: 64px;
@@ -257,4 +257,44 @@ label.labels::after{
 .px18
 {
   font-size: 18px;
+}
+
+.registerTitle {
+  font-family: "Archivo";
+  font-variation-settings: "wght" 600;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  margin-bottom: 0;
+  position: relative;
+  top: 30px;
+}
+
+.registerMainTitle {
+  font-family: "Archivo";
+  font-variation-settings: "wght" 600;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+}
+
+.labelTitle {
+  font-family: "Archivo";
+  font-variation-settings: "wght" 600;
+  font-size: 15px;
+  display: flex;
+  color: #756f86;
+}
+
+.regisInvalidFeedback {
+  font-size: 15px;
+  font-family: "Archivo";
+  text-align: left;
+  margin-bottom: 5px;
+  color: red;
+}
+
+.registerSpanText {
+  font-size: 16px;
+  font-family: "Archivo";
 }

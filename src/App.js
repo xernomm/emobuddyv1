@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import './style/base.css'
 import './style/button.css'
@@ -7,11 +6,11 @@ import './style/navbar.css'
 import './style/icons.css'
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { Homepage } from './pages/Homepage';
 import { NotFound } from './pages/NotFound';
 import 'typeface-inter';
+import { Login } from './pages/Login';
+import  PersistLogin  from './components/Auth/PersistLogin'
 
 
 const App = () => {
@@ -19,8 +18,13 @@ const App = () => {
     
         <>
         <Routes>
-          <Route path='*' element={<NotFound />} />
-          <Route path="/" element={<Homepage />} />
+          <Route element={<PersistLogin />}>
+
+            <Route path='*' element={<NotFound />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="/login" element={<Login />} />
+
+          </Route>
         </Routes>
         </>
     

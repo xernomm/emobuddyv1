@@ -124,6 +124,36 @@
     margin-bottom: 6%;
 }
 
+.formControl {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #dbe2ea;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius: 15px;
+    background-color: #f2f4f7;
+    font-size: 15px;
+    font-family: "Archivo";
+    font-variation-settings: "wght" 400;
+    box-shadow: 1px 2px 1px #f1eded;
+  }
+  
+  .formControl:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    border: 1px;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem #ef8354;
+  }
 
-
+  .registerSvgImageBottomDiv {
+    overflow: hidden;
+  }
 

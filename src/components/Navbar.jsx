@@ -71,7 +71,7 @@ export function CustomNavbar({ activePage }) {
           <Navbar.Collapse className='justify-content-end signupnav'>
             <div className="d-lg-flex">
               <a type='button' href="/register" className="btn ">Sign Up</a>
-              <a type='button' href="/register" className="btn btn-ytp-primary ms-1">Login</a>
+              <a type='button' href="/login" className="btn btn-ytp-primary ms-1">Login</a>
             </div>
           </Navbar.Collapse>
         </Container>
