@@ -11,6 +11,7 @@ import { NotFound } from './pages/NotFound';
 import 'typeface-inter';
 import { Login } from './pages/Login';
 import  PersistLogin  from './components/Auth/PersistLogin'
+import { RegisterPage } from './pages/RegisterPage';
 
 
 const App = () => {
@@ -18,11 +19,13 @@ const App = () => {
     
         <>
         <Routes>
-          <Route element={<PersistLogin />}>
 
             <Route path='*' element={<NotFound />} />
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<RegisterPage />} />
+
+          <Route element={<PersistLogin />}>
 
           </Route>
         </Routes>

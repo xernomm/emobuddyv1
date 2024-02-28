@@ -1,0 +1,339 @@
+.containerFormEnrol {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.cancelChildDiv {
+  align-self: center;
+  width: 50%;
+}
+
+.flexButtonsDiv {
+  width: 60%;
+}
+
+.flexButtonsDivRegister {
+  width: 40%;
+}
+
+.saveChildDiv {
+  align-self: center;
+  width: 50%;
+}
+
+.flexContainerForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+.childPicture {
+  width: 29%;
+  margin: 10px;
+  align-self: flex-start;
+}
+
+.kidImg {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.formWidth {
+  width: 60%;
+}
+
+.labelTitle {
+  font-family: WorkSans-VariableFont_wght;
+  font-variation-settings: "wght" 500;
+  font-size: 15px;
+  color: #b2b2b2;
+  display: flex;
+}
+
+.invalidFeedback {
+  font-size: 15px;
+  font-family: ZenMaruGothic-Medium;
+  text-align: left;
+  margin-bottom: 5px;
+  color: red;
+}
+
+.formControl {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000000;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #dbe2ea;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-radius: 10px;
+  font-family: WorkSans-VariableFont_wght;
+  font-variation-settings: "wght" 500;
+  font-size: 15px;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+
+.formControl::placeholder {
+  color: #000000;
+}
+.formControl::-ms-input-placeholder {
+  color: #000000;
+}
+.formControl::-ms-input-placeholder {
+  color: #000000;
+}
+.formControl:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  border: 1px;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem #ef8354;
+}
+
+.customSelect {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000000;
+  border: 1px solid #ced4da;
+  appearance: none;
+
+  border-radius: 10px;
+  background-color: #fff;
+  border-color: #dbe2ea;
+  border-style: solid;
+  font-family: WorkSans-VariableFont_wght;
+  font-variation-settings: "wght" 500;
+  font-size: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+
+.customSelectOptions {
+  color: #000000;
+}
+
+.customSelectPlaceholder {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #e8e8e8;
+  border: 1px solid #ced4da;
+  appearance: none;
+
+  border-radius: 10px;
+  background-color: #fff;
+  border-color: #dbe2ea;
+  border-style: solid;
+  font-family: WorkSans-VariableFont_wght;
+  font-variation-settings: "wght" 500;
+  font-size: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+
+.customSelect:focus {
+  color: #000000;
+  background-color: #fff;
+  border-color: #80bdff;
+  border: 1px;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem #ef8354;
+}
+
+.flexContainerColForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+.mainTitlesTags {
+  font-family: WorkSans-VariableFont_wght;
+  font-variation-settings: "wght" 500;
+  font-size: 15px;
+  color: #b2b2b2;
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+.cancelButton {
+  color: #b53448;
+  background-color: transparent;
+  font-family: SourceSansPro-SemiBold;
+  font-size: 18px;
+  border: none;
+  width: 100%;
+  padding: 0px;
+}
+
+.btnPressed {
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background-color: #ff7b7b;
+  border-radius: 10px;
+  border-color: #ff7b7b;
+  font-family: Montserrat-VariableFont_wght;
+  font-variation-settings: "wght" 600;
+  font-size: 16px;
+  width: 70%;
+}
+.btnPressed:hover:not(:disabled) {
+  background-color: #ff7b7b;
+  color: #fff;
+}
+
+.btnPressed:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.btnPressed:disabled {
+  background-color: #ff7b7b;
+  color: #fff;
+  opacity: 0.4;
+}
+
+@media (max-width: 800px) {
+  .containerFormEnrol {
+    max-width: 1140px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .flexContainerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .childPicture {
+    width: 100%;
+    margin: 5px;
+  }
+
+  .kidImg {
+    width: 150px;
+  }
+
+  .formWidth {
+    width: 100%;
+  }
+
+  .labelTitle {
+    font-family: WorkSans-VariableFont_wght;
+    font-variation-settings: "wght" 500;
+    font-size: 15px;
+    color: #b2b2b2;
+    display: flex;
+  }
+
+  .invalidFeedback {
+    font-size: 15px;
+    font-family: ZenMaruGothic-Medium;
+    text-align: left;
+    margin-bottom: 5px;
+    color: red;
+  }
+
+  .formControl {
+    width: 100%;
+    border-radius: 10px;
+    border-style: solid;
+    opacity: 1;
+  }
+
+  .customSelect {
+    width: 100%;
+    border-radius: 10px;
+    border-style: solid;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .flexContainerColForm {
+    margin: 10px;
+    width: 90%;
+  }
+
+  .mainTitlesTags {
+    font-family: WorkSans-VariableFont_wght;
+    font-variation-settings: "wght" 500;
+    font-size: 15px;
+    color: #b2b2b2;
+    text-align: center;
+  }
+
+  .cancelChildDiv {
+    align-self: center;
+    width: 50%;
+  }
+
+  .saveChildDiv {
+    align-self: center;
+    width: 50%;
+  }
+
+  .flexButtonsDiv {
+    width: 100%;
+  }
+
+  .flexButtonsDivRegister {
+    width: 100%;
+  }
+}

@@ -1,16 +1,18 @@
-import React, { useState, useContext } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import register from "../../style/Register.module.scss";
+import index from "../../index.module.scss";
 import svg from "../../img/XtraSchoolImg/register/title.png";
 import svg2 from "../../img/XtraSchoolImg/register/footer2x.png";
 import axios from "../../utils/axios";
+import useAuth from "../Auth/useAuth";
 import { Modal } from "react-bootstrap";
-import useAuth from "../../components/Auth/useAuth";
+import youthopiaImage1 from "../../img/XtraSchoolImg/home/youthopian.png";
 
-export function LoginForm()
-{
-    const { auth, setAuth } = useAuth();
+function Verified() {
+  const { auth, setAuth } = useAuth();
   const [show, setShow] = useState(false);
   const [userInfoErr, setUserInfoErr] = useState({});
   const [success, setSuccess] = useState(false);
@@ -44,16 +46,15 @@ export function LoginForm()
         //console.log(response?.data);
         const accessToken = response?.data?.accessToken;
         setAuth({ userInfo, accessToken });
-        navigate("/", { replace: true });
+        navigate("/registerchild");
       }
     } catch (err) {
       //console.log(err);
     }
   };
-
   return (
-    <>
-    <Modal
+    <React.Fragment>
+      <Modal
         show={show}
         onHide={handleClose}
         aria-labelledby="contained-modal-title-vcenter"
@@ -61,7 +62,7 @@ export function LoginForm()
       >
         <Modal.Body>
           <div
-            className="loginModal"
+            className={index.flexContainer}
             style={{
               justifyContent: "left",
               margin: "20px",
@@ -69,23 +70,25 @@ export function LoginForm()
             }}
           >
             <div style={{ width: "100%" }}>
-              <p className="interBlue px16">{userInfoErr}</p>
+              <p className={index.popupFont}>{userInfoErr}</p>
             </div>
           </div>
         </Modal.Body>
       </Modal>
-
-      <div className="container col-lg-12 "
-      style={{ backgroundColor: "inherit", maxWidth: "1400px" }}
-        >
-        <div className="loginBg shadow text-center"
+      <div
+        className="container"
+        style={{ backgroundColor: "inherit", maxWidth: "1400px" }}
+      >
+        <div
+          className={`shadow ${index.textCenter}`}
           style={{
-          backgroundColor: "transparent",
-          marginTop: "100px",
-          marginBottom: "100px",
-          paddingBottom: "0px",
-          }}>
-        <div style={{ alignSelf: "center", width: "100%" }}>
+            backgroundColor: "transparent",
+            marginTop: "100px",
+            marginBottom: "100px",
+            paddingBottom: "0px",
+          }}
+        >
+          <div style={{ alignSelf: "center", width: "100%" }}>
             <div
               style={{
                 backgroundColor: "#F2C857",
@@ -93,17 +96,20 @@ export function LoginForm()
                 borderTopRightRadius: "15px",
               }}
             >
-              <p className="registerTitle">XtraSchool</p>
+              <p className={register.registerCardTitles}>XtraSchool</p>
             </div>
-            <div className="regisImgTopDiv">
-              <img className="registerImg" src={svg}></img>
+            <div className={register.svgImageTopDiv}>
+              <img className={register.svgImage} src={svg}></img>
             </div>
             <div className="container">
-              <p className="registerMainTitle">Login</p>
-            </div>
-
-            <div className="regisContainerForm">
-              <div className="card-body">
+              <p className={register.mainTitles}>Congratulations!</p>
+              <p className={register.spanText} style={{ paddingRight: "5px" }}>
+                You have verified your account <br></br>
+              </p>
+              <p className={register.spanText} style={{ paddingRight: "5px" }}>
+                Please login to continue with your child registration <br></br>
+              </p>
+              <div className="container" style={{ maxWidth: "800px" }}>
                 <Formik
                   initialValues={initialValues}
                   validationSchema={validationSchema}
@@ -116,11 +122,11 @@ export function LoginForm()
                         {/*EMAIL*/}
 
                         <div className="form-group">
-                          <label className="labelTitle">Email</label>
+                          <label className={register.labelTitle}>Email</label>
                           <ErrorMessage
                             name="email"
                             render={(msg) => (
-                              <div className="regisInvalidFeedback">
+                              <div className={register.invalidFeedback}>
                                 {msg}
                               </div>
                             )}
@@ -130,19 +136,19 @@ export function LoginForm()
                             name="email"
                             type="email"
                             formcontrolname="email"
-                            className="formControl"
+                            className={register.formControl}
                           ></Field>
                         </div>
 
                         {/*PASSWORD*/}
                         <div className="form-group">
-                          <label className="labelTitle">
+                          <label className={register.labelTitle}>
                             Password
                           </label>
                           <ErrorMessage
                             name="password"
                             render={(msg) => (
-                              <div className="regisInvalidFeedback">
+                              <div className={register.invalidFeedback}>
                                 {msg}
                               </div>
                             )}
@@ -152,31 +158,16 @@ export function LoginForm()
                             name="password"
                             type="password"
                             formcontrolname="password"
-                            className="formControl"
+                            className={register.formControl}
                           ></Field>
-                          <div
-                            className="container mt-3"
-                            style={{
-                              fontFamily: "Archivo",
-                              textAlign: "end",
-                            }}
-                          >
-                            <Link
-                              to="/forgotpassword"
-                              style={{ color: "#EF8354", fontSize: "15px" }}
-                            >
-                              Forgot Your Password?
-                            </Link>
-                          </div>
                         </div>
-
                         {/*SIGN IN BUTTON*/}
                         <button
-                          className="btnPressed"
+                          className={register.btnPressed}
                           type="submit"
                           disabled={!formik.isValid}
                         >
-                          Sign in
+                          Add Child
                         </button>
                         <div
                           className="container"
@@ -185,20 +176,13 @@ export function LoginForm()
                             fontFamily: "Raleway-VariableFont_wght",
                           }}
                         >
-                          <span
-                            className="registerSpanText"
-                            style={{ paddingRight: "5px" }}
+                          {" "}
+                          <Link
+                            to="/forgotpassword"
+                            style={{ color: "#EF8354", fontSize: "15px" }}
                           >
-                            Don't have an XtraSchool account?
-                          </span>
-                          <span className="registerSpanText">
-                            <Link
-                              to="/register"
-                              style={{ color: "#EF8354", fontWeight: "bold" }}
-                            >
-                              Sign Up
-                            </Link>
-                          </span>
+                            Forgot Your Password?
+                          </Link>
                         </div>
                       </Form>
                     );
@@ -206,15 +190,17 @@ export function LoginForm()
                 </Formik>
               </div>
             </div>
+
             <div>
-              <div className="registerSvgImageBottomDiv">
-                <img className="registerImg" src={svg2}></img>
+              <div className={register.svgImageBottomDiv}>
+                <img className={register.svgImage} src={svg2}></img>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
-    </>
-  )
+    </React.Fragment>
+  );
 }
+
+export default Verified;

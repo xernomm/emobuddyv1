@@ -1,0 +1,210 @@
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.flexContainerTeacher {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.flexContainerButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.flexContainerTopText {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.flexContainerTopTextCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.flexContainerTopTextReverse {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.flexContainerCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.flexContainerStart {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flexContainerNowrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.flexContainerNotFound {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  //align-items: center;
+  flex-wrap: wrap;
+}
+
+.flexContainerBetween {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flexContainerAround {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mainContainer {
+  width: 100%;
+  max-width: 1450px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 15px;
+  margin: 0px;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.textCenter {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+  background-color: #f2f7f3;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.flexHalfWidth {
+  width: 50%;
+  flex-direction: column;
+  min-width: 50%;
+  display: flex;
+  padding-right: 20px;
+}
+
+.popupFont {
+  font-family: Montserrat-VariableFont_wght;
+  font-variation-settings: "wght" 600;
+  font-size: 20px;
+  color: #ef8354;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .flexContainerTopText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .flexHalfWidth {
+    width: 100%;
+
+    padding: 0;
+  }
+
+  .flexContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .flexContainerTeacher {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .flexContainerButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .flexContainerTopTextReverse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .flexContainerNowrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+  }
+
+  .flexHalfWidth {
+    width: 100%;
+
+    padding: 0;
+  }
+}

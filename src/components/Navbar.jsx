@@ -23,6 +23,7 @@ export function CustomNavbar({ activePage }) {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Link
+                href="/"
                 to="home"
                 smooth={true}
                 duration={500}

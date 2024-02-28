@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import register from '../../style/Register.module.scss'
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";

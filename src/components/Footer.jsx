@@ -181,7 +181,7 @@ export function Footer()
                                         type="email"
                                         placeholder="Email Address"
                                         className="rounded rounded-5"
-                                        style={{ height: '60px', width: '100%' }}
+                                        style={{ height: '60px', width: '130%' }}
                                         required
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                     />

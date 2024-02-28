@@ -1,15 +1,15 @@
 import { Footer } from "../components/Footer";
-import { LoginForm } from "../components/Login/LoginForm";
 import { LoginNavbar } from "../components/LoginNavbar";
 import { CustomNavbar } from "../components/Navbar";
+import Register from "../components/Register/Register";
 
-export function Login()
+export function RegisterPage()
 {
     return (
         <>
         <LoginNavbar />
-    <LoginForm />
-    <Footer />
-    </>
+        <Register />
+        <Footer />
+        </>
     )
 }
