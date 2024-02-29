@@ -1,20 +1,26 @@
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
-import CheckoutForm from './CheckoutForm';
+import { useState } from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "./CheckoutForm";
+import { Container, Row } from "react-bootstrap";
 
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_51Oh2XhDwXyY80N48jhZDKLNOusQN7DhtDFq1tKafezGitq0eEM6aQgHjWE51Fb7QTaEiGz32DwEBQ6YaqBTGuTZv00XwYHpaS8');
+const stripePromise = loadStripe("pk_test_51Op0UnERn2N86uFVBHRL3UdkZVv2DQ0flVajvnmFBSeAtAjFNKCqeTJIiVATbqaw5monJViYeddmBA6gGquJKxSk00tptNYpNc");
 
-export default function App() {
-  const options = {
-    // passing the client secret obtained from the server
-    clientSecret: '{{CLIENT_SECRET}}',
-  };
-
+export default function Payment() {
   return (
-    <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm />
-    </Elements>
+    <>
+      <Container>
+        <Row>
+          <h1 className="display-4">
+            Payment 
+          </h1>
+          <div className="mt-5 p-5 container border border-dark rounded rounded-5 col-lg-6">
+            <Elements stripe={stripePromise}>
+              <CheckoutForm />
+            </Elements>
+          </div>
+        </Row>
+      </Container>
+    </>
   );
 };

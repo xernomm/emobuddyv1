@@ -1,12 +1,63 @@
 import { Button, Container, Row } from "react-bootstrap";
+import { loadStripe } from "@stripe/stripe-js";
 import SubsPlansImg from '../img/Subscription Plans.svg'
 import bronze from '../img/Bronze.svg'
 import silver from '../img/Silver.svg'
 import gold from '../img/Gold.svg'
+import { Elements, useStripe, useElements } from '@stripe/react-stripe-js';
+import { PaymentElement } from "@stripe/react-stripe-js";
+import { useEffect, useState } from "react";
+
+const stripePromise = loadStripe('pk_test_51Op0UnERn2N86uFVBHRL3UdkZVv2DQ0flVajvnmFBSeAtAjFNKCqeTJIiVATbqaw5monJViYeddmBA6gGquJKxSk00tptNYpNc');
 
 
 export function SubscriptionPlans()
 {
+    const [stripe, setStripe] = useState(null);
+
+    useEffect(() => {
+        // Initialize Stripe.js when the component mounts
+        const initializeStripe = async () => {
+          const stripeObject = await stripePromise;
+          setStripe(stripeObject);
+        };
+    
+        initializeStripe();
+      }, []);
+
+      const handleCheckout = async (priceId) => {
+
+        if (!stripe) {
+            console.error('Stripe.js has not been loaded yet.');
+            return;
+          }
+        
+        // Fetch client secret from server
+        const response = await fetch('/create-checkout-session', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ priceId }),
+          });
+          const { sessionId, error } = await response.json();
+        
+          if (error) {
+            console.error('Error creating Checkout Session:', error.message);
+            // Handle error (e.g., show error message to the user)
+          } else {
+            // Redirect user to the Stripe Checkout page with the Checkout Session ID
+            const { error } = await stripe.redirectToCheckout({
+              sessionId: sessionId,
+            });
+        
+            if (error) {
+              console.error('Error redirecting to Checkout:', error.message);
+              // Handle error (e.g., show error message to the user)
+            }
+          }
+      };
+
     return (
         <>
         <Container>
@@ -175,17 +226,17 @@ export function SubscriptionPlans()
             <div className="buttonRows">
                 <div className="d-lg-flex justify-content-center col-lg-12">
                         <div className=" d-flex justify-content-center col-4 mx-3">
-                            <a href="/payment" target="_blank" type="btn" className="btn col-10 rounded rounded-4 py-3" id="yellowPlanBtn">
+                            <Button onClick={() => handleCheckout('price_1Op0hlERn2N86uFVSoDu5z1D')} type="btn" className="btn col-10 rounded rounded-4 py-3" id="yellowPlanBtn">
                                 SELECT PLAN
-                            </a>
+                            </Button>
                         </div>
                      <div  className=" d-flex justify-content-center col-4 mx-3 ">
-                            <Button type="btn" className="btn col-10 rounded rounded-4 py-3" id="redPlanBtn">
+                            <Button onClick={() => handleCheckout('price_1Op0luERn2N86uFV1Imjmrgs')} type="btn" className="btn col-10 rounded rounded-4 py-3" id="redPlanBtn">
                                 SELECT PLAN
                             </Button>
                         </div>
                         <div className=" d-flex justify-content-center col-4 mx-3">
-                            <Button type="btn" className="btn col-10 rounded rounded-4 py-3" id="greenPlanBtn">
+                            <Button onClick={() => handleCheckout('price_1Op0mWERn2N86uFVZAUTByYT')} type="btn" className="btn col-10 rounded rounded-4 py-3" id="greenPlanBtn">
                                 SELECT PLAN
                             </Button>
                         </div>

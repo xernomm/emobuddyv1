@@ -1,23 +1,33 @@
+require("dotenv").config({ path: "../.env" });
+
 const express = require("express");
 const app = express();
 const { resolve } = require("path");
-// Replace if using a different env file or config
-const env = require("dotenv").config({ path: "./.env" });
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2022-08-01",
+const staticDir = process.env.STATIC_DIR || 'build';
+const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+const clientSecret = process.env.CLIENT_SECRET;
+
+console.log("STATIC_DIR:", staticDir);
+console.log("STRIPE_PUBLISHABLE_KEY:", stripePublishableKey);
+console.log("CLIENT_SECRET:", clientSecret);
+
+const stripe = require("stripe")(process.env.CLIENT_SECRET, {
+  apiVersion: "2023-10-16"
 });
 
-app.use(express.static(process.env.STATIC_DIR));
 
-app.get("/", (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + "/index.html");
-  res.sendFile(path);
+app.use(express.static(resolve(__dirname, staticDir)));
+
+app.get('/', (req, res) => {
+  // Send the 'index.html' file from the specified directory
+  res.sendFile(resolve(__dirname, staticDir, 'index.html'));
 });
+
 
 app.get("/config", (req, res) => {
   res.send({
-    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    publishableKey: process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY,
   });
 });
 
@@ -26,10 +36,10 @@ app.post("/create-payment-intent", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       currency: "EUR",
       amount: 1999,
-      automatic_payment_methods: { enabled: true },
+      payment_method_types: ['card'],
+      // automatic_payment_methods: { enabled: true },
     });
 
-    // Send publishable key and PaymentIntent details to client
     res.send({
       clientSecret: paymentIntent.client_secret,
     });
@@ -42,6 +52,33 @@ app.post("/create-payment-intent", async (req, res) => {
   }
 });
 
-app.listen(5252, () =>
-  console.log(`Node server listening at http://localhost:5252`)
+app.use(express.json());
+
+app.post('/create-checkout-session', async (req, res) => {
+  const { priceId } = req.body;
+
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+        },
+      ],
+      mode: 'subscription',
+      success_url: 'https://yourwebsite.com/success',
+      cancel_url: 'https://yourwebsite.com/cancel',
+    });
+
+    res.json({ sessionId: session.id });
+  } catch (error) {
+    console.error('Error creating checkout session:', error);
+    res.status(500).json({ error: 'Failed to create checkout session' });
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () =>
+  console.log(`Node server listening at http://localhost:${PORT}`)
 );
