@@ -1,12 +1,15 @@
 require("dotenv").config({ path: "../.env" });
 
 const express = require("express");
+const cors = require('cors');
 const app = express();
+app.use(cors());
 const { resolve } = require("path");
 
 const staticDir = process.env.STATIC_DIR || 'build';
 const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
 const clientSecret = process.env.CLIENT_SECRET;
+const mysql = require('mysql2');
 
 console.log("STATIC_DIR:", staticDir);
 console.log("STRIPE_PUBLISHABLE_KEY:", stripePublishableKey);
@@ -78,7 +81,7 @@ app.post('/create-checkout-session', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.REACT_APP_SERVER_PORT || 5252;
 app.listen(PORT, () =>
   console.log(`Node server listening at http://localhost:${PORT}`)
 );

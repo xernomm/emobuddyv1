@@ -8,11 +8,21 @@ import { Elements, useStripe, useElements } from '@stripe/react-stripe-js';
 import { PaymentElement } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 
-const stripePromise = loadStripe('pk_test_51Op0UnERn2N86uFVBHRL3UdkZVv2DQ0flVajvnmFBSeAtAjFNKCqeTJIiVATbqaw5monJViYeddmBA6gGquJKxSk00tptNYpNc');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+
+// REACT_APP_BRONZE_PACKAGE_KEY="price_1Op0hlERn2N86uFVSoDu5z1D"
+// REACT_APP_SILVER_PACKAGE_KEY="price_1Op0luERn2N86uFV1Imjmrgs"
+// REACT_APP_GOLD_PACKAGE_KEY="price_1Op0mWERn2N86uFVZAUTByYT"
 
 
 export function SubscriptionPlans()
 {
+  
+    const baseUrl = process.env.REACT_APP_BASE_URL
+    const bronzePckg = process.env.REACT_APP_BRONZE_PACKAGE_KEY;
+    const silverPckg = process.env.REACT_APP_SILVER_PACKAGE_KEY;
+    const goldPckg = process.env.REACT_APP_GOLD_PACKAGE_KEY;
+
     const [stripe, setStripe] = useState(null);
 
     useEffect(() => {
@@ -26,6 +36,10 @@ export function SubscriptionPlans()
       }, []);
 
       const handleCheckout = async (priceId) => {
+ 
+        const protocol = window.location.protocol;
+        const apiUrl = `${protocol}//${baseUrl}/create-checkout-session`;
+        console.log(apiUrl)
 
         if (!stripe) {
             console.error('Stripe.js has not been loaded yet.');
@@ -33,7 +47,7 @@ export function SubscriptionPlans()
           }
         
         // Fetch client secret from server
-        const response = await fetch('/create-checkout-session', {
+        const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -226,17 +240,17 @@ export function SubscriptionPlans()
             <div className="buttonRows">
                 <div className="d-lg-flex justify-content-center col-lg-12">
                         <div className=" d-flex justify-content-center col-4 mx-3">
-                            <Button onClick={() => handleCheckout('price_1Op0hlERn2N86uFVSoDu5z1D')} type="btn" className="btn col-10 rounded rounded-4 py-3" id="yellowPlanBtn">
+                            <Button onClick={() => handleCheckout(bronzePckg)} type="btn" className="btn col-10 rounded rounded-4 py-3" id="yellowPlanBtn">
                                 SELECT PLAN
                             </Button>
                         </div>
                      <div  className=" d-flex justify-content-center col-4 mx-3 ">
-                            <Button onClick={() => handleCheckout('price_1Op0luERn2N86uFV1Imjmrgs')} type="btn" className="btn col-10 rounded rounded-4 py-3" id="redPlanBtn">
+                            <Button onClick={() => handleCheckout(silverPckg)} type="btn" className="btn col-10 rounded rounded-4 py-3" id="redPlanBtn">
                                 SELECT PLAN
                             </Button>
                         </div>
                         <div className=" d-flex justify-content-center col-4 mx-3">
-                            <Button onClick={() => handleCheckout('price_1Op0mWERn2N86uFVZAUTByYT')} type="btn" className="btn col-10 rounded rounded-4 py-3" id="greenPlanBtn">
+                            <Button onClick={() => handleCheckout(goldPckg)} type="btn" className="btn col-10 rounded rounded-4 py-3" id="greenPlanBtn">
                                 SELECT PLAN
                             </Button>
                         </div>
@@ -249,6 +263,8 @@ export function SubscriptionPlans()
                     </Button>
                 </div>
             </Row>
+            <div>
+    </div>
         </Container>
         </>
     )
