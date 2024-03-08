@@ -7,10 +7,17 @@ import svg2 from "../../img/XtraSchoolImg/register/footer2x.png";
 import axios from "../../utils/axios";
 import { Modal } from "react-bootstrap";
 import useAuth from "../../components/Auth/useAuth";
+import Swal from "sweetalert2";
 
 export function LoginForm()
 {
-    const { auth, setAuth } = useAuth();
+  const baseUrl = process.env.REACT_APP_BASE_URL
+  const protocol = window.location.protocol;
+
+  const loginUrl = `${protocol}//${baseUrl}/login`;
+
+
+  const {auth, setAuth} = useAuth();
   const [show, setShow] = useState(false);
   const [userInfoErr, setUserInfoErr] = useState({});
   const [success, setSuccess] = useState(false);
@@ -30,24 +37,44 @@ export function LoginForm()
       .required("Email is a required field"),
   });
 
-  const login = async (userInfo) => {
+  const login = async (initialValues, { setSubmitting, resetForm }) => {
     try {
-      const response = await axios.post("/user/login", userInfo, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
+      const response = await axios.post(loginUrl, initialValues);
+      sessionStorage.setItem('userEmail', initialValues.email);
       if (response.data.error) {
+        const msg = response.data.error.msg
         setShow(true);
         setUserInfoErr(response.data.error);
-        //console.log(response.data.error);
+        console.log(response.data.error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: msg,
+          footer: '<a href="/contact-us">Why do I have this issue?</a>'
+        });
       } else {
-        //console.log(response?.data);
-        const accessToken = response?.data?.accessToken;
-        setAuth({ userInfo, accessToken });
-        navigate("/", { replace: true });
+        const accessToken = response.data.accessToken;
+        console.log(response?.data);
+        setAuth({ initialValues, accessToken });
+        Swal.fire({
+          icon: "success",
+          title: "Logged in!",
+          confirmButtonText: "Home",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = "/";
+          }
+        }); 
       }
     } catch (err) {
-      //console.log(err);
+      console.log(err);
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: '<a href="/contact-us">Why do I have this issue?</a>'
+      });
     }
   };
 

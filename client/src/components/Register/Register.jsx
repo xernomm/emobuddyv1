@@ -8,9 +8,16 @@ import svg from "../../img/XtraSchoolImg/register/title.png";
 import svg2 from "../../img/XtraSchoolImg/register/footer2x.png";
 import axios from "../../utils/axios";
 import { Modal } from "react-bootstrap";
+import Swal from "sweetalert2";
+// import User from '../../../../server/model/User'
 import youthopiaImage1 from "../../img/XtraSchoolImg/home/youthopian.png";
 
 function Register() {
+  const baseUrl = process.env.REACT_APP_BASE_URL
+  const protocol = window.location.protocol;
+
+  const registerUrl = `${protocol}//${baseUrl}/register`;
+
   const [show, setShow] = useState(false);
 
   const [step, setStep] = useState(0);
@@ -23,7 +30,7 @@ function Register() {
     password: "",
     email: "",
     confirmpassword: "",
-    bonuslink: "",
+    bonusLink: "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -40,52 +47,63 @@ function Register() {
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Password Confirmation is a required field"),
 
-    bonuslink: Yup.string()
+    bonusLink: Yup.string()
       .matches(/^[0-9]+$/, "Must be only numeric values")
       .min(16, "Card no. must be 16 digits")
       .max(16, "Card no. must be 16 digits"),
   });
 
-  const nextStep = () => {
-    // Update state with incremented value
-    setStep(step + 1);
-  };
-
-  const previousStep = () => {
-    // Update state with incremented value
-    setStep(step - 1);
-  };
-  /*
-  const onSubmit = async (data) => {
-    await axios.post("/user", data).then((response) => {
-      if (response.data.error) {
-        setShow(true);
-        setUserInfoErr(response.data.error);
-      } else {
-        step + 1;
-      }
-    });
-  };*/
-  const onSubmit = async (data) => {
+  const onSubmit = async (initialValues, { setSubmitting, resetForm }) => {
     try {
-      const response = await axios.post("/user/", data, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
-      if (response.data.error) {
-        setShow(true);
-        setUserInfoErr(response.data.error);
-        //console.log(response.data.error);
+      // Send the form data to the backend
+      const response = await axios.post(registerUrl, initialValues);
+      sessionStorage.setItem('userEmail', initialValues.email);
+  
+      if (response.data.errors) {
+        // Handle validation errors
+        const errorMessage = response.data.errors[0].msg;
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops!',
+          text: errorMessage,
+        });
+      } else if (response.data.error) {
+        // Handle other errors
+        const errorMessage = response.data.error;
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: errorMessage,
+          footer: '<a href="/contact-us">Why do I have this issue?</a>',
+        });
       } else {
-        setStep(step + 1);
+        resetForm();
+        Swal.fire({
+          icon: 'success',
+          title: 'Just one more step!',
+          text: 'Thank you for joining us! Check your email for verification steps',
+          showCancelButton: true,
+          confirmButtonText: 'Next',
+          cancelButtonText: 'Close',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/verify-email';
+          }
+        });
       }
-    } catch (err) {
-      //console.log(err);
+    } catch (error) {
+      console.error('Error registering user:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href="/contact-us">Why do I have this issue?</a>',
+      });
+    } finally {
+      setSubmitting(false);
     }
   };
-  {
-    /*EMAIL SIGN UP*/
-  }
+  
 
   if (step === 0) {
     return (
@@ -224,7 +242,7 @@ function Register() {
                               BonusLink Card No.
                             </label>
                             <ErrorMessage
-                              name="bonuslink"
+                              name="bonusLink"
                               render={(msg) => (
                                 <div className={register.invalidFeedback}>
                                   {msg}
@@ -232,11 +250,11 @@ function Register() {
                               )}
                             ></ErrorMessage>
                             <Field
-                              name="bonuslink"
+                              name="bonusLink"
                               autoComplete="off"
                               type="text"
-                              formcontrolname="bonuslink"
-                              id="bonuslink"
+                              formcontrolname="bonusLink"
+                              id="bonusLink"
                               placeholder="BonusLink Card No."
                               className={register.formControl}
                             ></Field>

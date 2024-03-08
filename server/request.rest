@@ -1,0 +1,25 @@
+POST  http://localhost:5252/register
+Content-Type: application/json
+
+{
+    "email": "akunxernom@gmail.com",
+    
+    "password": "Abcd1234"
+}
+
+###
+
+POST  http://localhost:5252/login
+Content-Type: application/json
+
+{
+    "email": "akunxernom@gmail.com",
+    "password": "Abcd1234"
+}
+
+###
+
+DELETE  http://localhost:5252/logout
+
+###
+GET  http://localhost:5252/refresh-token

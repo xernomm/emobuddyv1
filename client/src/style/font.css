@@ -249,6 +249,13 @@ label.labels::after{
   text-decoration: none;
 }
 
+.archivoOrange
+{
+  font-family: 'Archivo';
+  color: #FF834E;
+  text-decoration: none;
+}
+
 .px16
 {
   font-size: 16px;

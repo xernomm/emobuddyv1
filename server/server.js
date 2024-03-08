@@ -1,26 +1,57 @@
-require("dotenv").config({ path: "../.env" });
+import dotenv from "dotenv";
+import express from "express";
+import cors from "cors";
+import { resolve } from "path";
+import stripeModule  from "stripe";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import db from "./config/Database.js";
+import User from './model/User.js'
+import router from "./routes/index.js";
+import cookieParser from "cookie-parser";
+import VerificationCode from "./model/VerificationCode.js";
 
-const express = require("express");
-const cors = require('cors');
+dotenv.config({ path: "../.env" });
 const app = express();
-app.use(cors());
-const { resolve } = require("path");
+
+const corsOptions = {
+  origin: process.env.ORIGIN, 
+  credentials: true, 
+}
+
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(router);
+app.use(cookieParser());
 
 const staticDir = process.env.STATIC_DIR || 'build';
 const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
 const clientSecret = process.env.CLIENT_SECRET;
-const mysql = require('mysql2');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+// const mysql = require('mysql2');
 
 console.log("STATIC_DIR:", staticDir);
 console.log("STRIPE_PUBLISHABLE_KEY:", stripePublishableKey);
 console.log("CLIENT_SECRET:", clientSecret);
+console.log("EMAIL: ", process.env.EMAIL_ADDRESS);
+console.log("PASSWORD: ", process.env.EMAIL_PASSWORD);
 
-const stripe = require("stripe")(process.env.CLIENT_SECRET, {
+const stripe = stripeModule (process.env.CLIENT_SECRET, {
   apiVersion: "2023-10-16"
 });
 
 
 app.use(express.static(resolve(__dirname, staticDir)));
+
+try {
+  await db.authenticate();
+  console.log('DB connected')
+  await User.sync();
+  await VerificationCode.sync();
+} catch (error) {
+  console.error(error);
+}
 
 app.get('/', (req, res) => {
   // Send the 'index.html' file from the specified directory
@@ -55,7 +86,6 @@ app.post("/create-payment-intent", async (req, res) => {
   }
 });
 
-app.use(express.json());
 
 app.post('/create-checkout-session', async (req, res) => {
   const { priceId } = req.body;
@@ -81,7 +111,7 @@ app.post('/create-checkout-session', async (req, res) => {
   }
 });
 
-const PORT = process.env.REACT_APP_SERVER_PORT || 5252;
+const PORT = process.env.PORT || 5252;
 app.listen(PORT, () =>
   console.log(`Node server listening at http://localhost:${PORT}`)
 );

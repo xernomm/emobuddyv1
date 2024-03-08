@@ -35,42 +35,45 @@ export function SubscriptionPlans()
         initializeStripe();
       }, []);
 
-      const handleCheckout = async (priceId) => {
- 
-        const protocol = window.location.protocol;
-        const apiUrl = `${protocol}//${baseUrl}/create-checkout-session`;
-        console.log(apiUrl)
+      const userMail = sessionStorage.getItem('userEmail');
 
-        if (!stripe) {
-            console.error('Stripe.js has not been loaded yet.');
-            return;
+      const handleCheckout = async (priceId) => {
+          const protocol = window.location.protocol;
+          const apiUrl = `${protocol}//${baseUrl}/create-checkout-session`;
+          console.log(apiUrl)
+          console.log(userMail)
+      
+          if (!stripe) {
+              console.error('Stripe.js has not been loaded yet.');
+              return;
           }
-        
-        // Fetch client secret from server
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ priceId }),
-          });
-          const { sessionId, error } = await response.json();
-        
-          if (error) {
-            console.error('Error creating Checkout Session:', error.message);
-            // Handle error (e.g., show error message to the user)
+      
+          if (userMail) {
+              const response = await fetch(apiUrl, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ priceId }),
+              });
+              const { sessionId, error } = await response.json();
+      
+              if (error) {
+                  console.error('Error creating Checkout Session:', error.message);
+              } else {
+                  const { error } = await stripe.redirectToCheckout({
+                      sessionId: sessionId,
+                  });
+      
+                  if (error) {
+                      console.error('Error redirecting to Checkout:', error.message);
+                  }
+              }
           } else {
-            // Redirect user to the Stripe Checkout page with the Checkout Session ID
-            const { error } = await stripe.redirectToCheckout({
-              sessionId: sessionId,
-            });
-        
-            if (error) {
-              console.error('Error redirecting to Checkout:', error.message);
-              // Handle error (e.g., show error message to the user)
-            }
+              window.location.href = "/login";
           }
       };
+      
 
     return (
         <>

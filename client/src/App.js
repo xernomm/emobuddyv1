@@ -14,6 +14,7 @@ import  PersistLogin  from './components/Auth/PersistLogin'
 import { RegisterPage } from './pages/RegisterPage';
 import Payment from './components/Payment/Payment';
 import Completion from './components/Payment/Completion';
+import { VerifyEmail } from './pages/VerifyEmail';
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
 
           {/* <Route element={<PersistLogin />}> */}
             <Route path='/payment' element= { <Payment /> } />

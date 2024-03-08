@@ -229,3 +229,19 @@
     margin-right: auto;
     margin-left: auto;
   }
+
+
+.verification-code-container {
+    display: flex;
+    justify-content: center;
+}
+.verification-code-input {
+    width: 10%;
+    height: 60px;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
